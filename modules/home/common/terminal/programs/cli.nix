@@ -31,6 +31,7 @@
       enable = true;
       enableNushellIntegration = config.programs.nushell.enable;
       enableFishIntegration = config.programs.fish.enable;
+      options = ["--cmd cd"];
     };
 
     carapace = {

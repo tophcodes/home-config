@@ -14,6 +14,7 @@ in {
   };
 
   config = mkIf cfg.kitty.enable {
+    programs.fish.enable = true;
     programs.kitty = {
       enable = true;
 
@@ -28,11 +29,11 @@ in {
       };
 
       extraConfig = ''
-        shell ${pkgs.nushell}/bin/nu
+        shell ${pkgs.fish}/bin/fish
         modify_font cell_height 7px
       '';
 
-      themeFile = "Catppuccin-Frappe";
+      themeFile = "Rosé Pine Dawn";
     };
 
     xdg.configFile."kitty/open-actions.conf".text = ''

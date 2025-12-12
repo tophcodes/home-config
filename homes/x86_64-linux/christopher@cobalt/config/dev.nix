@@ -15,6 +15,7 @@
 
     zx # Tool for writing better scripts
     # trurl # Parsing and manipulating URLs via CLI
+    ripgrep # Grep file search
     dig # DNS
     onefetch # Git information tool
     tokei # Like cloc

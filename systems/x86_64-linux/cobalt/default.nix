@@ -90,6 +90,12 @@ with lib._elements; {
 
     # Bluetooth manager
     blueman.enable = true;
+    udev.extraRules = ''
+      # SpaceMouse Enterprise
+      SUBSYSTEM=="hidraw", ATTRS{idVendor}=="256f", MODE="0666"
+      # Thrustmaster T.Flight Rudder Pedals
+      SUBSYSTEM=="input", ATTRS{idProduct}=="b679", ATTRS{idVendor}=="044f", MODE="0666", ENV{ID_INPUT_JOYSTICK}="1"
+    '';
     udev.packages = [pkgs.platformio-core.udev];
 
     # Linux link via MQTT
@@ -152,9 +158,10 @@ with lib._elements; {
       gtk3
 
       openrgb-with-all-plugins
-      lact # GPU tuning
+      # lact # GPU tuning
       libimobiledevice
       ifuse
+      naps2 # Scanning
 
       # Oxidized coreutils
       uutils-coreutils-noprefix
@@ -173,8 +180,9 @@ with lib._elements; {
 
   users.groups.pico = {};
 
-  systemd.packages = [pkgs.lact];
-  systemd.services.lactd.wantedBy = ["multi-user.target"];
+  # AMD GPU tooling
+  # systemd.packages = [pkgs.lact];
+  # systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   hardware = {
     amdgpu = {
@@ -190,6 +198,9 @@ with lib._elements; {
     graphics = {
       enable = true;
       enable32Bit = true;
+      extraPackages = with pkgs; [
+        mesa.opencl
+      ];
     };
 
     # SANE scanner support
@@ -219,4 +230,26 @@ with lib._elements; {
       efiSupport = true;
     };
   };
+
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-vaapi
+      obs-pipewire-audio-capture
+      obs-backgroundremoval
+      droidcam-obs
+    ];
+  };
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
+  boot.kernelModules = ["v4l2loopback"];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+  '';
+  security.polkit.enable = true;
 }

@@ -24,11 +24,12 @@ in
     in {
       # age.secrets.christopher-password = secretFor "christopher" "christopher-password.age";
 
+      programs.fish.enable = true;
       users = {
         users.christopher = mkIfUser "christopher" {
           isNormalUser = true;
           # passwordFile = config.age.secrets.christopher-password.path;
-          shell = pkgs.nushell;
+          shell = pkgs.fish;
           extraGroups = [
             "wheel"
             "docker"

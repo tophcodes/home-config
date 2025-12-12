@@ -2,6 +2,8 @@
   home.packages = with pkgs; [
     prismlauncher # minecraft launcher
     heroic # gog/epic launcher
+    protonup-qt
+    opentrack
 
     # game manager
     (lutris.override {
@@ -17,5 +19,7 @@
     gamemode # performance mode
     mangohud # performance overlays
     alvr
+
+    input-remapper
   ];
 }

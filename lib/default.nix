@@ -3,6 +3,7 @@
   secret = name: ./../secrets/${name};
 
   commonHomeModule = module: ./../homes/common + "/${module}";
+  fixture = path: ./../fixtures + "/${path}";
   writeNushellApplication = import ./writeNushellApplication.nix {inherit lib;};
 
   # Determines the file location of the passed in attr set (e.g. `{ sep = "#"; })

@@ -16,28 +16,23 @@
     grim # Screenshots
     slurp # Region selection
 
-    # GUI
-    slack # Work chat
-    vesktop # Discord client
-    vlc # Video player
+    # Productivity
     obsidian # Note taking
-    calibre # eBook Manager
-    onlyoffice-desktopeditors # libreoffice alternative
-    filezilla # FTP Client
-    orca-slicer # Bambu Lab Slicer + Control
-    krita # Drawing software
-    inputs.affinity-nix.packages.${pkgs.system}.v3 # Affinity
-    mochi # SRS flashcards
-    thunderbird # Email client
-    speedcrunch # GUI calculator app
-    naps2 # Scanning
-    vcv-rack # Eurorack simulator
-    davinci-resolve # Video editor
-    cider-2 # Apple music player
     todoist-electron # To-Do List app
+    thunderbird # Email client
+    onlyoffice-desktopeditors # libreoffice alternative
+    speedcrunch # GUI calculator app
+    calibre # eBook Manager
 
+    # Viewers
+    cider-2 # Apple music player
+    vlc # Video player
     xarchiver # Archive viewer/extractor
     zathura # Document viewer
     evince # Document viewer
+
+    vesktop # Discord client
+    filezilla # FTP Client
+    mochi # SRS flashcards
   ];
 }

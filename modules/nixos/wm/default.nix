@@ -28,17 +28,17 @@ in {
 
     services.xserver = {
       enable = true;
-
-      # SDDM is broken
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
-      };
     };
 
     services.desktopManager.plasma6.enable = true;
     services.displayManager = {
       defaultSession = "plasma";
+
+      # SDDM is broken
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
 
       # sddm = {
       #   enable = true;

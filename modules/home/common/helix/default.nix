@@ -22,7 +22,7 @@ in {
     defaultEditor = true;
 
     settings = {
-      theme = "catppuccin";
+      theme = "rose_pine_dawn";
 
       editor = {
         rulers = [80];

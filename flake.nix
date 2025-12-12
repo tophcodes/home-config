@@ -52,7 +52,7 @@
         permittedInsecurePackages = [];
       };
 
-      overlays = with inputs; [];
+      overlays = with inputs; [niri.overlays.niri];
 
       outputs-builder = channels: {
         formatter = channels.nixpkgs.alejandra;
@@ -68,7 +68,7 @@
 
   inputs = {
     # nixpkgs.url = "git+file:///home/christopher/code/opensource/nixpkgs";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Opinionated flake library for better organization without much boilerplate
@@ -100,5 +100,7 @@
     affinity-nix.url = "github:mrshmllow/affinity-nix";
     quadlet.url = "github:SEIAROTg/quadlet-nix";
     musnix.url = "github:musnix/musnix";
+    niri.url = "github:sodiboo/niri-flake/9e59ee8";
+    awww.url = "git+https://codeberg.org/LGFae/awww";
   };
 }

@@ -7,10 +7,13 @@
     [
       ./ssh.nix
       ./gpg
+      ./niri
       ./misc/launcher.nix
       ./misc/browser.nix
       ./misc/gaming.nix
       ./misc/onedrive.nix
+      ./misc/creativity.nix
+      ./misc/recording.nix
       ./misc/everything.nix # TODO: Determine if we really always want all these programs or they should be composable
       ./global/current-packages.nix
     ]
