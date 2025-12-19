@@ -21,7 +21,7 @@
     settings = {
       user = {
         name = "Christopher Mühl";
-        email = "hello@muehl.dev";
+        email = "christopher@muehl.dev";
       };
       push = {
         default = "current";
