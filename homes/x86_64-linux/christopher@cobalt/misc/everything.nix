@@ -31,6 +31,7 @@
     zathura # Document viewer
     evince # Document viewer
 
+    telegram-desktop
     vesktop # Discord client
     filezilla # FTP Client
     mochi # SRS flashcards
