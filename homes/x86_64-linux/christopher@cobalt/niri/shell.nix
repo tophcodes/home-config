@@ -1,17 +1,12 @@
 {
-  inputs,
   pkgs,
   ...
 }: {
-  imports = [inputs.ags.homeManagerModules.default];
-
-  programs.ags = {
+  programs.quickshell = {
     enable = true;
-    configDir = ./ags;
-
-    extraPackages = with pkgs; [
-      # inputs.astal.packages.${pkgs.system}
-      fzf
-    ];
+    systemd = {
+      enable = true;
+      target = "graphical-session.target";
+    };
   };
 }
