@@ -83,7 +83,7 @@ with lib._elements; {
   };
 
   services = {
-    # elements.ovos.enable = true;
+    # ovos.enable = true; # message-bus only. remainder in hm
 
     openssh.enable = true;
     openssh.settings.PasswordAuthentication = false;

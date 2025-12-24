@@ -1,4 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    inputs.git-global-log.homeManagerModules.default
+  ];
+
   home.packages = with pkgs; [
     # Dev tools
     git
@@ -10,6 +18,7 @@
     pkgs._elements.git-delete-stale
   ];
 
+  programs.git-global-log.enable = true;
   programs.git = {
     enable = true;
 

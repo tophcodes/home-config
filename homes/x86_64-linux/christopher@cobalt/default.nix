@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  # inputs,
   ...
 } @ all: {
   imports =
@@ -17,6 +18,7 @@
       ./misc/recording.nix
       ./misc/everything.nix # TODO: Determine if we really always want all these programs or they should be composable
       ./global/current-packages.nix
+      # inputs.ovos.homeManagerModules.default
     ]
     ++ (import ./config.nix all);
 
@@ -34,6 +36,19 @@
   };
 
   elements.kitty.enable = true;
+
+  # services.ovos = {
+  #   language = "de-de";
+
+  #   audio = {
+  #     enable = true;
+  #     voice = "de_DE-thorsten-medium";
+  #     logLevel = "DEBUG";
+  #   };
+
+  #   listener.enable = true; # STT input (requires microphone)
+  #   skills.enable = true; # Intent processing
+  # };
 
   home = {
     extraOutputsToInstall = ["doc" "devdoc"];

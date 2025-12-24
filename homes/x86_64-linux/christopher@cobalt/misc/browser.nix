@@ -2,12 +2,9 @@
   programs.firefox = {
     enable = true;
 
-    profiles."default" = {
-      id = 0;
-    };
-    profiles."work" = {
-      id = 1;
-    };
+    profiles."default".id = 0;
+    profiles."work".id = 1;
+    profiles."prune".id = 3;
   };
 
   home.packages = [pkgs._elements.open-url];

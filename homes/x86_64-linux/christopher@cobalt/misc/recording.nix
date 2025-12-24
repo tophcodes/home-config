@@ -6,7 +6,7 @@
   home.packages = with pkgs; [
     droidcam
     davinci-resolve
-    ffmpeg
+    # ffmpeg
   ];
 
   services.easyeffects.enable = true;
@@ -14,7 +14,7 @@
   programs.firefox.profiles."streaming" = {
     id = 2;
     settings = {};
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+    extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
       kagi-search
       kagi-privacy-pass
       ublock-origin

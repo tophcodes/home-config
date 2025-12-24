@@ -51,6 +51,7 @@
     musnix.url = "github:musnix/musnix";
     niri.url = "github:sodiboo/niri-flake/9e59ee8";
     awww.url = "git+https://codeberg.org/LGFae/awww";
+    git-global-log.url = "github:tophcodes/git-global-log";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -119,6 +120,7 @@
       overlays = with inputs; [
         niri.overlays.niri
         nur.overlays.default
+        ovos.overlays.default
       ];
 
       outputs-builder = channels: {
