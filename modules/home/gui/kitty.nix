@@ -19,8 +19,9 @@ in {
       enable = true;
 
       settings = {
-        window_padding_width = "5 10";
+        window_padding_width = "3 3";
         paste_actions = "no-op";
+        # font_family = "Monaspace Neon NF";
       };
 
       actionAliases = {
@@ -29,7 +30,7 @@ in {
 
       extraConfig = ''
         shell ${pkgs.fish}/bin/fish
-        modify_font cell_height 7px
+        # modify_font cell_height 7px
       '';
     };
 

@@ -47,7 +47,7 @@
   };
 
   # Enable privileged ports for rootless pods
-  boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = "0";
+  boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = "53";
 
   environment.systemPackages = with pkgs; [
     helix

@@ -24,14 +24,7 @@
     speedcrunch # GUI calculator app
     calibre # eBook Manager
 
-    # Viewers
     cider-2 # Apple music player
-    vlc # Video player
-    xarchiver # Archive viewer/extractor
-    zathura # Document viewer
-    evince # Document viewer
-
-    # element-desktop
     fractal # Matrix client
     gomuks # Matrix client TUI
     telegram-desktop

@@ -5,6 +5,7 @@
     # Core
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    master.url = "github:NixOS/nixpkgs/master";
 
     # Flake framework
     # flake-parts.url = "github:hercules-ci/flake-parts";
@@ -49,17 +50,29 @@
     affinity-nix.url = "github:mrshmllow/affinity-nix";
     quadlet.url = "github:SEIAROTg/quadlet-nix";
     musnix.url = "github:musnix/musnix";
-    niri.url = "github:sodiboo/niri-flake/9e59ee8";
+    niri.url = "github:sodiboo/niri-flake";
+    flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
     awww.url = "git+https://codeberg.org/LGFae/awww";
     git-global-log.url = "github:tophcodes/git-global-log";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    community-solid-server = {
+      url = "github:tophcodes/CommunitySolidServer.nix/main";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "unstable";
+    };
 
     # Custom
     ovos = {
-      url = "git+file:///home/christopher/workspaces/ovos-flake";
+      url = "git+file:///home/christopher/workspaces/mine/ovos-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    waka-victoriametrics = {
+      url = "git+file:///home/christopher/workspaces/mine/waka-victoriametrics";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -95,6 +108,7 @@
           stylix.nixosModules.stylix
           musnix.nixosModules.default
           ovos.nixosModules.default
+          waka-victoriametrics.nixosModules.default
         ];
         beryllium.modules = [
           quadlet.nixosModules.quadlet
@@ -105,6 +119,10 @@
       };
 
       homes.users = {
+        # TODO: For some reason this needs to be toggled for agenix to work?
+        # "christopher@cobalt".modules = with inputs; [
+        #   niri.homeModules.niri
+        # ];
         "christopher@beryllium".modules = with inputs; [
           quadlet.homeManagerModules.quadlet
         ];
@@ -121,6 +139,9 @@
         niri.overlays.niri
         nur.overlays.default
         ovos.overlays.default
+        (final: prev: {
+          waka-victoriametrics = waka-victoriametrics.packages.${final.system}.default;
+        })
       ];
 
       outputs-builder = channels: {

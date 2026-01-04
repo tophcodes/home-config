@@ -7,7 +7,7 @@ pkgs.writeShellApplication {
     REPO=$(cat "$HOME/.gh/hausgold-repos" | fuzzel -d)
 
     if [[ -n $REPO ]]; then
-        open-url "$BASE_URI$REPO"
+        xdg-open "$BASE_URI$REPO"
     fi
   '';
 }

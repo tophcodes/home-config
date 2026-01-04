@@ -1,9 +1,4 @@
-{
-  pkgs,
-  inputs,
-  system,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # Editors
     jetbrains-toolbox # Installer for JetBrains IDEs
@@ -11,7 +6,10 @@
     code-cursor
     vscode
 
-    rfc
+    atuin-desktop
+    rfc # TUI-based RFC reader
+    nix-init # Generate Nix packages from URLs
+    install-nothing
 
     # Language Servers
     lua-language-server
@@ -21,14 +19,18 @@
     nil # nix lsp
 
     # trurl # Parsing and manipulating URLs via CLI
+    pandoc # Document converter
     ripgrep # Grep file search
     dig # DNS
     onefetch # Git information tool
     tokei # Like cloc
+    gource
     zeal # Offline documentation browser
+    _elements.dedoc # Terminal-based documentation viewer
     just # Just a command runner
     claude-monitor
     devenv
+    gitui
     _elements.oryx # TUI for sniffing network traffic using eBPF
 
     # Build tools

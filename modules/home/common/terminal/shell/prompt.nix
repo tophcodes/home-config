@@ -6,8 +6,6 @@ in {
     enableNushellIntegration = config.programs.nushell.enable;
     enableFishIntegration = config.programs.fish.enable;
 
-    # Original settings taken from `catppuccin_frappe`, and adjusted to my
-    # likings and usage.
     settings = {
       "$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json";
       version = 3;
@@ -30,10 +28,10 @@ in {
           newline = true;
           segments = [
             {
-              foreground = "p:os";
+              foreground = "p:blue";
               style = "plain";
-              template = "{{ .Icon }} ";
-              type = "os";
+              template = "{{ .UserName }}@{{ .HostName }} ";
+              type = "session";
             }
             {
               foreground = "p:pink";
@@ -50,12 +48,6 @@ in {
                   "~/code/own" = "own";
                 };
               };
-            }
-            {
-              foreground = "p:blue";
-              style = "plain";
-              template = "{{ .UserName }}@{{ .HostName }} ";
-              type = "session";
             }
             {
               foreground = "p:lavender";

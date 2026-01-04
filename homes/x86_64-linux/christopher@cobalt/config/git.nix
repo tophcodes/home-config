@@ -43,8 +43,8 @@
       alias.force-push = "push --force-with-lease"; # Safe force pushes
       fetch.writeCommitGraph = true; # Automatically write the commit graph on fetches
       init.defaultBranch = "main";
-      core.pager = "delta";
-      interactive.diffFilter = "delta --color-only";
+      # core.pager = "delta";
+      # interactive.diffFilter = "delta --color-only";
       delta = {
         navigate = true;
         dark = true;

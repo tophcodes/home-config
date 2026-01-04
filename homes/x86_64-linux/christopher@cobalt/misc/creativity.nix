@@ -5,15 +5,26 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # 3D printing and engineering
-    orca-slicer
+    inputs.affinity-nix.packages.${system}.v3 # adobe suite replacement
+    gmic # greyc's magic
 
-    # Drawing
     krita
-    inputs.affinity-nix.packages.${system}.v3
+    krita-plugin-gmic
 
-    # Audio
-    vcv-rack
-    supercollider
+    gimp
+    gimpPlugins.gmic
+    # gimpPlugins.bimp # batch image manipulation, broken atm
+    # rawtherapee
+
+    vcv-rack # eurorack synth simulator
+    supercollider # audio programming language
   ];
+
+  # - the nixpkgs version crashes once logged in
+  # - flatpaks somehow can't be installed via HM
+  # - need to manually a desktop entry for the flatpak
+  xdg.desktopEntries.bambustudio = {
+    name = "Bambu Studio";
+    exec = "flatpak run com.bambulab.BambuStudio";
+  };
 }

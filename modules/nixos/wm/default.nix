@@ -16,11 +16,11 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      kdePackages.discover
-      kdePackages.kclock
-      kdePackages.kcharselect
-      kdePackages.kolourpaint
-      kdePackages.ksystemlog
+      # kdePackages.discover
+      # kdePackages.kclock
+      # kdePackages.kcharselect
+      # kdePackages.kolourpaint
+      # kdePackages.ksystemlog
       wayland-utils
       wl-clipboard
       libsForQt5.qtstyleplugin-kvantum
@@ -33,19 +33,16 @@ in {
       package = pkgs.niri;
     };
 
+    # niri-flake.cache.enable = false;
+
     services.xserver = {
       enable = true;
     };
 
+    # TODO: Switch this to Niri!
     services.desktopManager.plasma6.enable = true;
     services.displayManager = {
-      defaultSession = "plasma";
-
-      # SDDM is broken
-      # gdm = {
-      #   enable = true;
-      #   wayland = true;
-      # };
+      defaultSession = "niri";
 
       sddm = {
         enable = true;
@@ -53,11 +50,12 @@ in {
       };
     };
 
-    xdg.portal = {
+    xdg.portal = with pkgs; {
       enable = true;
       xdgOpenUsePortal = true;
-      extraPortals = [pkgs.xdg-desktop-portal-gtk];
-      configPackages = [pkgs.xdg-desktop-portal-gtk];
+
+      extraPortals = [xdg-desktop-portal-gnome xdg-desktop-portal-gtk];
+      #E configPackages = [pkgs.xdg-desktop-portal-gtk];
       config.common.default = "gtk";
     };
 

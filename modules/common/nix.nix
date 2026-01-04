@@ -1,10 +1,11 @@
 {
-  self,
   pkgs,
   config,
   ...
 }: {
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
+
     # Automatic cleanup
     gc.automatic = true;
     gc.dates = "weekly";

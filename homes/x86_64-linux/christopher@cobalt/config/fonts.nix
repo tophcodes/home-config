@@ -1,12 +1,30 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     font-manager
-    nerd-fonts.monaspace # Patched fonts
-    google-fonts # Google fonts
-    monaspace
+    google-fonts
+    kdePackages.kcharselect
   ];
 
   fonts.fontconfig.enable = true;
+
+  stylix.fonts = {
+    monospace = {
+      name = "Monaspace Neon NF";
+      package = pkgs.nerd-fonts.monaspace;
+    };
+
+    sizes = {
+      applications = 12;
+      terminal = 13;
+      desktop = 10;
+      popups = 10;
+    };
+  };
+
+  programs.kitty.settings = {
+    font_family = "family='MonaspiceNe Nerd Font' style='Light'";
+    bold_font = "family='MonaspiceNe Nerd Font' style='Bold'";
+  };
 
   home.file.".local/share/fonts" = {
     # This includes FontAwesome and other proprietary fonts which are licensed,

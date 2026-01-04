@@ -9,12 +9,17 @@
       editor = {
         rulers = [80];
         shell = ["nu" "-c"];
-        line-number = "relative";
+        bufferline = "always";
 
+        auto-save = true;
         auto-format = true;
+
         file-picker.hidden = false;
 
         # TODO: Why does the clipboard not work?
+        #
+        #
+        #
         # clipboard-provider.custom = {
         #   yank = {command = "wl-copy";};
         #   paste = {command = "wl-paste";};

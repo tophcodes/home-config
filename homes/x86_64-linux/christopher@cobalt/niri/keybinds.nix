@@ -7,6 +7,7 @@
     binds = with config.lib.niri.actions; {
       "Mod+space".action = spawn "fuzzel";
       "Mod+e".action = spawn "dolphin";
+      "Mod+d".action = spawn "zeal"; # Documentation viewer
       "Mod+c".action = spawn "${pkgs._elements.spawn-term}/bin/spawn-term";
       "Mod+g".action = spawn "${pkgs._elements.hg-picker}/bin/hg-picker";
 

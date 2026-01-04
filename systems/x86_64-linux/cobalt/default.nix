@@ -5,12 +5,15 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }:
 with lib._elements; {
   imports = [
+    inputs.flatpak.nixosModules.nix-flatpak
     ./hardware.nix
     ./disko.nix
+    ./metrics.nix
   ];
 
   elements = {
@@ -21,6 +24,8 @@ with lib._elements; {
 
     secrets = {
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPjqieS4GkYAa1WRYZpxjgYsj7VGZ9U+rTFCkX8M0umD";
+
+      needs.victoriametricsEnvFile.rekeyFile = "victoria.env.age";
     };
   };
 
@@ -84,6 +89,13 @@ with lib._elements; {
 
   services = {
     # ovos.enable = true; # message-bus only. remainder in hm
+    flatpak = {
+      enable = true;
+      packages = [
+        "com.bambulab.BambuStudio"
+        "im.riot.Riot"
+      ];
+    };
 
     openssh.enable = true;
     openssh.settings.PasswordAuthentication = false;
@@ -105,6 +117,20 @@ with lib._elements; {
     beszel-agent.enable = true;
     beszel-agent.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMkUPOw28Cu2LMuzfmvjT/L2ToNHcADwGyGvSpJ4wH2T";
     elements.ollama.enable = true;
+
+    # waka-victoriametrics = {
+    #   enable = true;
+    #   listenAddress = "127.0.0.1:8080";
+    #   victoriametrics.url = "http://localhost:8428/api/v1/write";
+    #   metrics.labels = [
+    #     "project"
+    #     "language"
+    #     "editor"
+    #     "branch"
+    #     "category"
+    #     "operating_system"
+    #   ];
+    # };
 
     pipewire = {
       enable = lib.mkForce true;
@@ -179,6 +205,9 @@ with lib._elements; {
       xdg-desktop-portal
       xdg-desktop-portal-gtk
     ];
+
+    # Quirky workaround for this not being set in portals for some reason
+    sessionVariables.MOZ_ENABLE_WAYLAND = "1";
   };
 
   users.groups.pico = {};

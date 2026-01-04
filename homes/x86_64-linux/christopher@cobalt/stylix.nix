@@ -1,14 +1,21 @@
 {
-  config,
   inputs,
   pkgs,
   ...
 }: {
   imports = [inputs.stylix.homeModules.stylix];
 
+  home.packages = with pkgs; [
+    # themes firefox with wallpaper theme
+    pywalfox-native
+  ];
+
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-dawn.yaml";
+    autoEnable = true;
+
+    # TODO: Figure out a way for automatic dark-/light-mode switching
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
 
     targets.firefox.profileNames = ["default" "work" "streaming"];
 
@@ -17,13 +24,6 @@
       # name = "Rosé Pine Dawn";
       name = "BreezeX-RosePineDawn-Linux";
       size = 32;
-    };
-
-    fonts.sizes = {
-      applications = 12;
-      terminal = 13;
-      desktop = 10;
-      popups = 10;
     };
   };
 }

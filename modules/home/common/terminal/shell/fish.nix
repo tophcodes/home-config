@@ -31,7 +31,27 @@ in {
 
     preferAbbrs = true;
     shellAbbrs = {
-      elm = "elements";
+      "elm" = "elements";
+
+      # Git related
+      "ga" = "git add";
+      "gb" = "git branch";
+      "gst" = "git status";
+      "gbl" = "git blame";
+      "grs" = "git restore --staged";
+      "gcm" = "git commit -m \"%\"";
+
+      "iso-date" = "date -u +\"%Y-%m-%dT%H:%M:%SZ\"";
+
+      "jf" = "sudo journalctl -f -u";
+      "sys stat" = "systemctl status";
+      "sys up" = "systemctl start";
+      "sys down" = "systemctl stop";
+      "sys re" = "systemctl restart";
+      "-C" = {
+        position = "anywhere";
+        expansion = "--color";
+      };
     };
   };
 }
