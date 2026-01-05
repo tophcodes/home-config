@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     # Editors
     jetbrains-toolbox # Installer for JetBrains IDEs
@@ -45,6 +49,11 @@
     nodejs_20
     nodejs_20.pkgs.pnpm
   ];
+
+  bosun.secrets.npmrc = {
+    rekeyFile = "npmrc.age";
+    path = "${config.home.homeDirectory}/.npmrc";
+  };
 
   programs = {
     go.enable = true;

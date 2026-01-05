@@ -24,7 +24,7 @@ pkgs.rustPlatform.buildRustPackage rec {
     description = "Terminal based viewer for DevDocs";
     homepage = "https://github.com/toiletbril/dedoc";
     license = lib.licenses.gpl3Only;
-    maintainers = with lib.maintainers; [];
+    # maintainers = with lib.maintainers; [];
     mainProgram = "dedoc";
   };
 }

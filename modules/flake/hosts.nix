@@ -1,8 +1,22 @@
 {
-  self,
   inputs,
+  inputs',
   ...
-}: {
+}: let
+  inherit (inputs) self;
+
+  mkHost = host: config:
+    {
+      path = ../../configurations/nixos/${host};
+      deployable = true;
+
+      specialArgs = {
+        inherit inputs inputs';
+        hostname = host;
+      };
+    }
+    // config;
+in {
   imports = [inputs.easy-hosts.flakeModule];
 
   config.easy-hosts = {
@@ -17,19 +31,12 @@
     };
 
     hosts = {
-      endurance = {
-        path = ../../configurations/nixos/endurance;
-        class = "nixos";
-      };
+      endurance = mkHost "endurance" {};
 
-      vasa = {
-        path = ../../configurations/darwin/vasa;
+      aepplet = mkHost "aepplet" {};
+
+      vasa = mkHost "vasa" {
         class = "darwin";
-      };
-
-      aepplet = {
-        path = ../../configurations/nixos/aepplet;
-        class = "nixos";
       };
     };
   };

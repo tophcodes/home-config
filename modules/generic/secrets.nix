@@ -2,6 +2,7 @@
   config,
   inputs',
   inputs,
+  hostname,
   pkgs,
   lib,
   self,
@@ -13,14 +14,12 @@ in {
   imports = [
     inputs.agenix.nixosModules.default
     inputs.agenix-rekey.nixosModules.default
-
-    # inputs.agenix.homeManagerModules.default
   ];
 
   options.bosun = {
     rekeyPath = mkOption {
       type = types.str;
-      default = config.networking.hostName;
+      default = hostname;
     };
 
     key = mkOption {

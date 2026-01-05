@@ -46,6 +46,8 @@
     text = bin;
   };
 in {
+  bosun.secrets.repoUpdatePAT = "repo-update-pat.age";
+
   systemd.user.timers."update-hausgold-github" = {
     Install.WantedBy = ["timers.target"];
     Timer = {

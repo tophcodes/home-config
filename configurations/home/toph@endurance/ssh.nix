@@ -10,10 +10,10 @@
     "id_github"
     "id_hausgold"
     "id_homeassistant"
-    "id_rhenium"
+    "id_alvin"
   ];
 in {
-  elements.secrets.needs = builtins.listToAttrs (
+  bosun.secrets = builtins.listToAttrs (
     builtins.map
     (key:
       lib.attrsets.nameValuePair key {

@@ -11,6 +11,8 @@
     passwordCommand = "cat ${config.age.secrets.emailPassword.path}";
   };
 in {
+  bosun.secrets.emailPassword = "email-password.age";
+
   programs = {
     # TODO: Move this into its own file
     irssi = {

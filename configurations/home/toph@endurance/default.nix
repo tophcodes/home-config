@@ -1,14 +1,14 @@
 {
   pkgs,
   config,
-  lib,
-  inputs,
   ...
 } @ all: {
+  bosun.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHl33DPxxzxrNNjM8rL4ktAj4ExzCyGiU8rKog0csxNA";
+
   imports =
     [
       # inputs.ovos.homeManagerModules.default
-
+      ./gaming.nix
       ./ssh.nix
       ./email.nix
       ./gpg
@@ -17,30 +17,14 @@
       ./default-applications.nix
       ./misc/launcher.nix
       ./misc/browser.nix
-      ./misc/gaming.nix
       ./misc/onedrive.nix
       ./misc/creativity.nix
       ./misc/recording.nix
       ./misc/everything.nix # TODO: Determine if we really always want all these programs or they should be composable
-      ./global/current-packages.nix
     ]
     ++ (import ./config.nix all);
 
-  elements.secrets = {
-    rekeyPath = "christopher_cobalt";
-    key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHl33DPxxzxrNNjM8rL4ktAj4ExzCyGiU8rKog0csxNA";
-
-    needs = {
-      repoUpdatePAT = "repo-update-pat.age";
-      emailPassword = "email-password.age";
-      npmrc = {
-        rekeyFile = "npmrc.age";
-        path = "${config.home.homeDirectory}/.npmrc";
-      };
-    };
-  };
-
-  elements.kitty.enable = true;
+  #.kitty.enable = true;
 
   services = {
     activitywatch = {

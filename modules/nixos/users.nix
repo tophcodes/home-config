@@ -1,51 +1,50 @@
 {
   inputs,
-  config,
+  inputs',
   pkgs,
-  lib,
+  hostname,
   ...
-}: let
-  cfg = config.elements;
-in
-  with lib;
-  with builtins; {
-    options = {
-      elements = {
-        users = mkOption {
-          type = types.listOf types.str;
-          default = [];
-        };
+}: {
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
+  config = {
+    bosun.secrets.tophPassword = "toph-password.age";
+
+    programs.fish.enable = true;
+
+    home-manager = {
+      users.toph = inputs.self.homeConfigurations."toph@${hostname}";
+
+      extraSpecialArgs = {
+        inherit inputs inputs' hostname;
       };
     };
 
-    config = {
-      bosun.secrets.tophPassword = "toph-password.age";
+    users = {
+      users.toph = {
+        isNormalUser = true;
+        # hashedPasswordFile = config.age.secrets.tophPassword.path;
+        shell = pkgs.fish;
 
-      programs.fish.enable = true;
+        extraGroups = [
+          "wheel"
+          "docker"
+          "dialout"
+          "uinput"
+          "pico"
+        ];
 
-      users = {
-        users.toph = {
-          isNormalUser = true;
-          # hashedPasswordFile = config.age.secrets.tophPassword.path;
-          shell = pkgs.fish;
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBEqcR3f71g7yuxQtUewrqdoEh8jDHtkB1973GF0EQ6q christopher@all"
+        ];
+      };
 
-          extraGroups = [
-            "wheel"
-            "docker"
-            "dialout"
-            "uinput"
-            "pico"
-          ];
-
-          openssh.authorizedKeys.keys = [
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBEqcR3f71g7yuxQtUewrqdoEh8jDHtkB1973GF0EQ6q christopher@all"
-          ];
-        };
-
-        groups.toph = {
-          members = ["toph"];
-          gid = 1000;
-        };
+      groups.toph = {
+        members = ["toph"];
+        gid = 1000;
       };
     };
-  }
+  };
+}

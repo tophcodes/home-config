@@ -70,7 +70,11 @@
     };
   };
 
-  outputs = inputs @ {flake-parts, ...}:
+  outputs = inputs @ {
+    flake-parts,
+    nixpkgs,
+    ...
+  }:
     flake-parts.lib.mkFlake {inherit inputs;} (top @ {
       config,
       withSystem,
@@ -79,7 +83,6 @@
     }: {
       imports = [
         inputs.agenix-rekey.flakeModules.default
-        inputs.home-manager.flakeModules.home-manager
         ./modules/flake
       ];
     });
