@@ -13,10 +13,13 @@
     ./hardware.nix
     ./disko.nix
     ./metrics.nix
-    ./musnix.nix
   ];
 
   bosun = {
+    profiles = {
+      graphical.enable = true;
+    };
+
     #quirks = ["avahi" "docker" "nix-ld"];
     key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPjqieS4GkYAa1WRYZpxjgYsj7VGZ9U+rTFCkX8M0umD";
   };
