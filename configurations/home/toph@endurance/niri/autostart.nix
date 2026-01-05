@@ -1,12 +1,10 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
-  programs.niri.settings.spawn-at-startup = with lib._elements; [
-    # {argv = ["awww-daemon"];}
-    # {argv = ["awww" "img" "${fixture "wallpapers/cat-vibes.webp"}"];}
+{...}: {
+  programs.niri.settings.spawn-at-startup = [
+    # this is a funny fix for xdg environment not properly being set and thus
+    # xdg-open not working properly
+    {argv = ["systemctl --user restart xdg-desktop-portal"];}
 
-    {argv = ["kitty"];}
+    # open fastfetch by default
+    {argv = ["kitty --title 'fastfetch' sh -c 'fastfetch; read'"];}
   ];
 }

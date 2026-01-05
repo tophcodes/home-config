@@ -41,8 +41,14 @@ in {
         block-out-from = "screencast";
       }
       {
-        matches = [{app-id = "kitty";}];
-        opacity = 0.97;
+        matches = [{title = "fastfetch";}];
+        open-floating = true;
+        opacity = 1.0;
+
+        min-width = 400; # 115 x 26 columns
+        max-width = 400;
+        min-height = 400;
+        max-height = 400;
       }
       {
         matches = [{title = "ld.toph.so";}];
@@ -56,6 +62,10 @@ in {
         max-height = 800;
 
         block-out-from = "screencast";
+      }
+      {
+        matches = [{app-id = "kitty";}];
+        opacity = 0.97;
       }
       {
         matches = [

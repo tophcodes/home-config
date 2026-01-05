@@ -13,6 +13,5 @@
 
   home.packages = with pkgs; [
     fuzzel
-    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
   ];
 }
