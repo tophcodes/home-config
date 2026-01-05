@@ -78,8 +78,7 @@
       ...
     }: {
       imports = [
-        inputs.agenix-rekey.flakeModule
-        inputs.disko.flakeModules.default
+        inputs.agenix-rekey.flakeModules.default
         inputs.home-manager.flakeModules.home-manager
         ./modules/flake
       ];

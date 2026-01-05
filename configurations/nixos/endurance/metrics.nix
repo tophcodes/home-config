@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: {
+  bosun.secrets.victoriametricsEnvFile = "victoria.env.age";
+
   services = {
     telegraf = {
       enable = true;

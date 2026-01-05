@@ -1,26 +1,18 @@
-# ++ 80_Hg: Mercury
-#
-# Minimal environment for a workbase VirtualBox on macOS
 {
   lib,
   pkgs,
   inputs,
   ...
-}:
-with lib._elements; {
+}: {
   imports = [
     ./hardware.nix
     ./disko.nix
   ];
 
-  elements = {
-    hostname = "mercury";
-    users = ["christopher"];
-    quirks = ["avahi" "docker"];
+  bosun = {
+    # quirks = ["avahi" "docker"];
 
-    secrets = {
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPjqieS4GkYAa1WRYZpxjgYsj7VGZ9U+rTFCkX8M0umD";
-    };
+    key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPjqieS4GkYAa1WRYZpxjgYsj7VGZ9U+rTFCkX8M0umD";
   };
 
   system.stateVersion = "24.11";
@@ -46,7 +38,7 @@ with lib._elements; {
   disko.devices.disk.main.device = "/dev/sda";
 
   boot.loader.grub.enable = true;
-  networking.hostName = "mercury";
+  networking.hostName = "aepplet";
   time.timeZone = "Europe/Berlin";
 
   environment.systemPackages = with pkgs; [

@@ -6,15 +6,31 @@
   imports = [inputs.easy-hosts.flakeModule];
 
   config.easy-hosts = {
+    shared.modules = [
+      ../generic/default.nix
+    ];
+
+    perClass = class: {
+      modules = [
+        "${self}/modules/${class}/default.nix"
+      ];
+    };
+
     hosts = {
-      endurance = {};
+      endurance = {
+        path = ../../configurations/nixos/endurance;
+        class = "nixos";
+      };
 
       vasa = {
-        arch = "aarch64";
+        path = ../../configurations/darwin/vasa;
         class = "darwin";
       };
 
-      aepplet = {};
+      aepplet = {
+        path = ../../configurations/nixos/aepplet;
+        class = "nixos";
+      };
     };
   };
 }

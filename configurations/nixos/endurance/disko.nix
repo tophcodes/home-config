@@ -1,8 +1,13 @@
-{
+{inputs, ...}: {
+  imports = [
+    inputs.disko.nixosModules.disko
+  ];
+
   disko.devices = {
     disk = {
       main = {
         type = "disk";
+        device = "/dev/nvme1n1";
         content = {
           type = "gpt";
           partitions = {

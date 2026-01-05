@@ -7,34 +7,18 @@
   config,
   inputs,
   ...
-}:
-with lib._elements; {
+}: {
   imports = [
     inputs.flatpak.nixosModules.nix-flatpak
     ./hardware.nix
     ./disko.nix
     ./metrics.nix
+    ./musnix.nix
   ];
 
-  elements = {
-    hostname = "cobalt";
-    users = ["christopher"];
-    quirks = ["avahi" "docker" "nix-ld"];
-    wm = enabled;
-
-    secrets = {
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPjqieS4GkYAa1WRYZpxjgYsj7VGZ9U+rTFCkX8M0umD";
-
-      needs.victoriametricsEnvFile.rekeyFile = "victoria.env.age";
-    };
-  };
-
-  # Set the default drive
-  disko.devices.disk.main.device = "/dev/nvme1n1";
-
-  musnix = {
-    enable = true;
-    rtcqs.enable = true;
+  bosun = {
+    #quirks = ["avahi" "docker" "nix-ld"];
+    key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPjqieS4GkYAa1WRYZpxjgYsj7VGZ9U+rTFCkX8M0umD";
   };
 
   qt = {
