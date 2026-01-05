@@ -1,13 +1,17 @@
 {
   inputs,
   pkgs,
+  lib,
+  config,
   ...
-}: {
+}: let
+  inherit (lib) mkIf;
+in {
   imports = [
-    inputs.niri.nixosModules.default
+    inputs.niri.nixosModules.niri
   ];
 
-  config = {
+  config = mkIf config.bosun.profiles.graphical.enable {
     environment.systemPackages = with pkgs; [
       wayland-utils
       wl-clipboard
@@ -32,19 +36,19 @@
           wayland.enable = true;
         };
       };
-
-      xdg.portal = {
-        enable = true;
-        xdgOpenUsePortal = true;
-        config.common.default = "gtk";
-
-        extraPortals = with pkgs; [
-          xdg-desktop-portal-gnome
-          xdg-desktop-portal-gtk
-        ];
-      };
-
-      security.polkit.enable = true;
     };
+
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      config.common.default = "gtk";
+
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gnome
+        xdg-desktop-portal-gtk
+      ];
+    };
+
+    security.polkit.enable = true;
   };
 }

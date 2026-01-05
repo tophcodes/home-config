@@ -1,15 +1,13 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   nix = {
     package = pkgs.lixPackageSets.stable.lix;
 
-    # Automatic cleanup
-    gc.automatic = true;
-    gc.dates = "weekly";
-    gc.options = "--delete-older-than 21d";
+    # automatic cleanup
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 21d";
+    };
 
     settings = {
       # builders-use-substitutes = true;
@@ -33,11 +31,4 @@
       "olm-3.2.16"
     ];
   };
-
-  environment.etc."current-system-packages".text = let
-    packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
-    sortedUnique = builtins.sort builtins.lessThan (pkgs.lib.lists.unique packages);
-    formatted = builtins.concatStringsSep "\n" sortedUnique;
-  in
-    formatted;
 }

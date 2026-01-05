@@ -1,6 +1,6 @@
 {
   config,
-  system,
+  inputs',
   inputs,
   pkgs,
   lib,
@@ -37,7 +37,7 @@ in {
   config = {
     environment.systemPackages = [
       pkgs.age-plugin-yubikey
-      inputs.agenix-rekey.packages.${system}.default
+      inputs'.agenix-rekey.packages.default
     ];
 
     age = {

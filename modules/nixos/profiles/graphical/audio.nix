@@ -1,15 +1,16 @@
 {
   inputs,
   lib,
+  config,
   ...
 }: let
-  inherit (lib) mkForce mkDefault;
+  inherit (lib) mkIf mkForce mkDefault;
 in {
   imports = [
     inputs.musnix.nixosModules.default
   ];
 
-  config = {
+  config = mkIf config.bosun.profiles.graphical.enable {
     musnix = {
       enable = mkDefault true;
       rtcqs.enable = true;
@@ -17,7 +18,7 @@ in {
 
     users.users.toph.extraGroups = ["audio"];
 
-    pipewire = {
+    services.pipewire = {
       enable = mkForce true;
       alsa.enable = true;
       jack.enable = true;

@@ -26,7 +26,7 @@ in
       users = {
         users.toph = {
           isNormalUser = true;
-          passwordFile = config.age.secrets.tophPassword.path;
+          # hashedPasswordFile = config.age.secrets.tophPassword.path;
           shell = pkgs.fish;
 
           extraGroups = [
