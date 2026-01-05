@@ -1,6 +1,5 @@
 {
   inputs,
-  inputs',
   pkgs,
   hostname,
   ...
@@ -15,10 +14,13 @@
     programs.fish.enable = true;
 
     home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+
       users.toph = inputs.self.homeConfigurations."toph@${hostname}";
 
       extraSpecialArgs = {
-        inherit inputs inputs' hostname;
+        inherit inputs hostname;
       };
     };
 

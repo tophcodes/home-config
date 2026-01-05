@@ -8,7 +8,7 @@
   inherit (lib) mkIf;
 in {
   imports = [
-    inputs.niri.nixosModules.niri
+    #inputs.niri.nixosModules.niri
   ];
 
   config = mkIf config.bosun.profiles.graphical.enable {

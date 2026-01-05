@@ -4,6 +4,7 @@
     ./homes.nix
     ./args.nix
     ./formatter.nix
+    ./packages.nix
     ./lib
   ];
 }

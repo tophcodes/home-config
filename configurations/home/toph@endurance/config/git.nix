@@ -15,7 +15,7 @@
     delta # Diffing tool
     onefetch # neofetch for git repos
 
-    pkgs._elements.git-delete-stale
+    harbor.git-delete-stale
   ];
 
   programs.git-global-log.enable = true;

@@ -14,7 +14,7 @@ in {
     enable = true;
 
     shellAliases = config.home.shellAliases;
-    shellInit = lib._elements.selfReferencedString {sep = "#";} ''
+    shellInit = ''
       # Set global environment variables.
       ${env}
     '';

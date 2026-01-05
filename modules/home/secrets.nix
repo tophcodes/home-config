@@ -18,7 +18,8 @@ in {
   options.bosun = {
     rekeyPath = mkOption {
       type = types.str;
-      default = hostname;
+      # TODO: Make username configurable
+      default = "toph.${hostname}";
     };
 
     key = mkOption {

@@ -1,19 +1,11 @@
-{
-  inputs,
-  inputs',
-  ...
-}: let
+{inputs, ...}: let
   inherit (inputs) self;
 
-  mkHost = host: config:
+  mkHost = hostname: config:
     {
-      path = ../../configurations/nixos/${host};
+      path = ../../configurations/nixos/${hostname};
       deployable = true;
-
-      specialArgs = {
-        inherit inputs inputs';
-        hostname = host;
-      };
+      specialArgs = {inherit inputs hostname;};
     }
     // config;
 in {

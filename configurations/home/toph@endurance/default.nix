@@ -149,9 +149,9 @@
   home = {
     extraOutputsToInstall = ["doc" "devdoc"];
 
-    packages = with pkgs._elements; [
-      quick-zeal
-      spawn-term
+    packages = with pkgs; [
+      harbor.quick-zeal
+      harbor.spawn-term
     ];
   };
 

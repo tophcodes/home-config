@@ -1,11 +1,10 @@
 {
   pkgs,
-  system,
   inputs,
   ...
 }: {
   home.packages = with pkgs; [
-    inputs.affinity-nix.packages.${system}.v3 # adobe suite replacement
+    inputs.affinity-nix.packages.${pkgs.stdenv.hostPlatform.system}.v3 # adobe suite replacement
     gmic # greyc's magic
 
     krita

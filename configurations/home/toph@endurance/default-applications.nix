@@ -2,7 +2,7 @@
   home.packages = with pkgs; [
     # Simple browsers for HTML
     qutebrowser
-    pkgs._elements.firefox-with-context # Open URLs in different browser profiles based on context
+    harbor.firefox-with-context # Open URLs in different browser profiles based on context
   ];
 
   xdg.mimeApps = {

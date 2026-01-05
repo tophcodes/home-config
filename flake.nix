@@ -86,53 +86,17 @@
         ./modules/flake
       ];
     });
-  # (inputs.snowfall.mkFlake {
-  # inherit inputs;
-  # src = ./.;
-
-  # # Exposes all internal libs and packages as `lib._elements` or `pkgs._elements` respectively
-  # snowfall.namespace = "_elements";
-
-  # # Global system modules to be included for all systems
-  # systems.modules = with inputs; {
-  #   nixos = [
-  #     disko.nixosModules.default
-  #     ./modules/common
-  #   ];
-  #   darwin = [
-  #     stylix.darwinModules.stylix
-  #     ./modules/common
-  #   ];
-  # };
 
   # # Add modules only to specific hosts
   # systems.hosts = with inputs; {
   #         cobalt.modules = [
-  #           niri.nixosModules.niri
   #           stylix.nixosModules.stylix
-  #           musnix.nixosModules.default
   #           ovos.nixosModules.default
   #           waka-victoriametrics.nixosModules.default
   #         ];
   #       };
 
-  #       homes.users = {
-  #         # TODO: For some reason this needs to be toggled for agenix to work?
-  #         # "christopher@cobalt".modules = with inputs; [
-  #         #   niri.homeModules.niri
-  #         # ];
-  #       };
-
-  #       # Configure nixpkgs when instantiating the package set
-  #       # TODO: This is already specified elsewhere. Still needed here?
-  #       channels-config = {
-  #         allowUnfree = true;
-  #         permittedInsecurePackages = [];
-  #       };
-
   #       overlays = with inputs; [
-  #         niri.overlays.niri
-  #         nur.overlays.default
   #         ovos.overlays.default
   #         (final: prev: {
   #           waka-victoriametrics = waka-victoriametrics.packages.${final.system}.default;

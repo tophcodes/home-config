@@ -1,6 +1,3 @@
-# ++ 27_Co: Cobalt
-#
-# Main tower workstation environment
 {
   pkgs,
   lib,
@@ -31,7 +28,7 @@
   };
 
   networking = {
-    hostName = "cobalt";
+    hostName = "endurance";
     firewall.enable = false;
     interfaces.eno1.wakeOnLan.enable = true;
   };

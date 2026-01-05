@@ -6,7 +6,7 @@
   programs.niri.settings = {
     prefer-no-csd = true;
 
-    debug.honor-xdg-activation-with-invalid-serial = true;
+    # debug.honor-xdg-activation-with-invalid-serial = true;
 
     layout = {
       always-center-single-column = true;

@@ -30,12 +30,12 @@
     tokei # Like cloc
     gource
     zeal # Offline documentation browser
-    _elements.dedoc # Terminal-based documentation viewer
+    harbor.dedoc # Terminal-based documentation viewer
     just # Just a command runner
     claude-monitor
     devenv
     gitui
-    _elements.oryx # TUI for sniffing network traffic using eBPF
+    harbor.oryx # TUI for sniffing network traffic using eBPF
 
     # Build tools
     cargo

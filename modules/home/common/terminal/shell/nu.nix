@@ -16,7 +16,7 @@
       nushellPlugins.skim
     ];
 
-    extraConfig = lib._elements.selfReferencedString {sep = "#";} ''
+    extraConfig = ''
       let carapace_completer = { |spans|
         carapace $spans.0 nushell ...$spans
           | from json
@@ -72,7 +72,7 @@
       }
     '';
 
-    envFile.text = lib._elements.selfReferencedString {sep = "#";} ''
+    envFile.text = ''
       $env.PATH = (
         $env.PATH
           | split row (char esep)

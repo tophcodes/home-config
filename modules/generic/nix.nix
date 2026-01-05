@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
   nix = {
     package = pkgs.lixPackageSets.stable.lix;
 
@@ -23,12 +28,21 @@
   };
 
   nixpkgs = {
-    config.allowUnfree = true;
-    config.permittedInsecurePackages = [
-      "nixos-config"
-      "electron-36.9.5"
-      "dotnet-sdk-6.0.428"
-      "olm-3.2.16"
-    ];
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "cider-2"
+        ];
+
+      permittedInsecurePackages = [
+        # "nixos-config"
+        # "electron-36.9.5"
+        # "dotnet-sdk-6.0.428"
+        "olm-3.2.16"
+      ];
+    };
+
+    overlays = import ../../overlays {inherit inputs lib;};
   };
 }
