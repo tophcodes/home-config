@@ -10,49 +10,31 @@
   ];
 
   bosun = {
-    # quirks = ["avahi" "docker"];
-
     key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPjqieS4GkYAa1WRYZpxjgYsj7VGZ9U+rTFCkX8M0umD";
+
+    profiles = {
+      docker.enable = true;
+      work.enable = true;
+    };
   };
 
   system.stateVersion = "24.11";
-
-  # Enable nix flakes
-  nix = {
-    package = pkgs.nixVersions.stable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
-
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = false;
-      AllowUsers = ["toph"];
-    };
-  };
 
   # Set the default drive, which in the case of Mercury is
   # a VirtualBox image.
   disko.devices.disk.main.device = "/dev/sda";
 
   boot.loader.grub.enable = true;
-  networking.hostName = "aepplet";
-  time.timeZone = "Europe/Berlin";
 
   environment.systemPackages = with pkgs; [
     inputs.docker-compose-1.legacyPackages."x86_64-linux".docker-compose
     gnumake
   ];
 
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = lib.mkForce "de";
+  programs = {
+    vim.enable = true;
+    git.enable = true;
   };
-
-  programs.vim.enable = true;
-  programs.git.enable = true;
 
   # Disable the firewall so that all traffic is allowed
   networking.firewall.enable = false;

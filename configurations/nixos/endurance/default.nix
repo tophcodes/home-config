@@ -30,26 +30,18 @@
   };
 
   networking = {
-    hostName = "endurance";
     firewall.enable = false;
     interfaces.eno1.wakeOnLan.enable = true;
   };
 
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin";
-
-  console = {
-    font = "Lat2-Terminus16";
-    useXkbConfig = true; # use xkbOptions in tty.
-  };
-
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-  };
-
   programs = {
     weylus.users = ["toph"];
+
+    gnupg.agent = {
+      enable = true;
+      pinentryPackage = pkgs.pinentry-gtk2;
+      enableSSHSupport = true;
+    };
 
     dconf.enable = true;
 
@@ -58,10 +50,7 @@
       protontricks.enable = true;
       remotePlay.openFirewall = true;
     };
-    # VR support
     envision.enable = true;
-
-    # For game-related system optimisations
     gamemode.enable = true;
 
     _1password.enable = true;
@@ -70,6 +59,20 @@
       # Certain features, including CLI integration and system authentication support,
       # require enabling PolKit integration on some desktop environments (e.g. Plasma).
       polkitPolicyOwners = ["toph"];
+    };
+
+    obs-studio = {
+      enable = true;
+      enableVirtualCamera = true;
+
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-vaapi
+        obs-pipewire-audio-capture
+        obs-backgroundremoval
+        obs-move-transition
+        droidcam-obs
+      ];
     };
   };
 
@@ -82,9 +85,6 @@
         "im.riot.Riot"
       ];
     };
-
-    openssh.enable = true;
-    openssh.settings.PasswordAuthentication = false;
 
     hardware.openrgb.enable = true;
 
@@ -118,13 +118,6 @@
     #   ];
     # };
 
-    pipewire = {
-      enable = lib.mkForce true;
-      alsa.enable = true;
-      jack.enable = true;
-      pulse.enable = true;
-    };
-
     usbmuxd = {
       enable = true;
       package = pkgs.usbmuxd2;
@@ -145,19 +138,6 @@
 
     # Smartcard support, necessary for Yubikey logins
     pcscd.enable = true;
-  };
-
-  programs = {
-    thunar.enable = true;
-    thunar.plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-    ];
-
-    gnupg.agent = {
-      enable = true;
-      pinentryPackage = pkgs.pinentry-gtk2;
-      enableSSHSupport = true;
-    };
   };
 
   environment = {
@@ -208,17 +188,17 @@
       overdrive.enable = true;
     };
 
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
-
     graphics = {
       enable = true;
       enable32Bit = true;
       extraPackages = with pkgs; [
         mesa.opencl
       ];
+    };
+
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
     };
 
     # SANE scanner support
@@ -237,37 +217,27 @@
     keyboard.zsa.enable = true;
   };
 
-  system.stateVersion = "23.05"; # Do not change this value!
+  # Do not change this value!
+  system.stateVersion = "23.05";
 
-  # Set up our bootloader
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
+  boot = {
+    # Set up our bootloader
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+      };
     };
-  };
 
-  programs.obs-studio = {
-    enable = true;
-    enableVirtualCamera = true;
-
-    plugins = with pkgs.obs-studio-plugins; [
-      wlrobs
-      obs-vaapi
-      obs-pipewire-audio-capture
-      obs-backgroundremoval
-      obs-move-transition
-      droidcam-obs
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback
     ];
-  };
 
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    v4l2loopback
-  ];
-  boot.kernelModules = ["v4l2loopback"];
-  boot.extraModprobeConfig = ''
-    options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
-  '';
+    kernelModules = ["v4l2loopback"];
+    extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    '';
+  };
 }

@@ -7,6 +7,11 @@
   nix = {
     package = pkgs.lixPackageSets.stable.lix;
 
+    # TODO: Is this even needed with lix?
+    # extraOptions = ''
+    #   experimental-features = nix-command flakes
+    # '';
+
     # automatic cleanup
     gc = {
       automatic = true;
