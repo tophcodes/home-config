@@ -24,7 +24,7 @@
     ]
     ++ (import ./config.nix all);
 
-  #.kitty.enable = true;
+  elements.kitty.enable = true;
 
   services = {
     activitywatch = {

@@ -47,7 +47,7 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
-    affinity-nix.url = "github:mrshmllow/affinity-nix";
+#    affinity-nix.url = "github:mrshmllow/affinity-nix";
     musnix.url = "github:musnix/musnix";
     flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
     git-global-log.url = "github:tophcodes/git-global-log";
@@ -60,10 +60,10 @@
     };
 
     # Custom
-    ovos = {
-      url = "git+file:///home/christopher/workspaces/mine/ovos-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # ovos = {
+    #   url = "git+file:///home/christopher/workspaces/mine/ovos-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     waka-victoriametrics = {
       url = "git+file:///home/christopher/workspaces/mine/waka-victoriametrics";
       inputs.nixpkgs.follows = "nixpkgs";

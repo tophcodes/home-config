@@ -27,6 +27,7 @@
     users = {
       users.toph = {
         isNormalUser = true;
+        initialPassword = "wheel";
         # hashedPasswordFile = config.age.secrets.tophPassword.path;
         shell = pkgs.fish;
 

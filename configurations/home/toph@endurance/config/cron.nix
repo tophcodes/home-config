@@ -7,7 +7,7 @@
     #!/usr/bin/env bash
 
     ORG="hausgold"
-    OUTPUT_FILE="/home/christopher/.gh/$ORG-repos"
+    OUTPUT_FILE="/home/toph/.gh/$ORG-repos"
     TOKEN=$(cat ${config.age.secrets.repoUpdatePAT.path})
 
     API_URL="https://api.github.com/orgs/$ORG/repos"

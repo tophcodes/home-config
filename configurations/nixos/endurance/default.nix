@@ -47,7 +47,7 @@
   };
 
   programs = {
-    weylus.users = ["christopher"];
+    weylus.users = ["toph"];
 
     dconf.enable = true;
 
@@ -67,7 +67,7 @@
       enable = true;
       # Certain features, including CLI integration and system authentication support,
       # require enabling PolKit integration on some desktop environments (e.g. Plasma).
-      polkitPolicyOwners = ["christopher"];
+      polkitPolicyOwners = ["toph"];
     };
   };
 

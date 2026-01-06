@@ -5,7 +5,7 @@
   ];
 
   home = {
-    stateVersion = "23.11";
+    stateVersion = "25.11";
     enableNixpkgsReleaseCheck = false;
   };
 

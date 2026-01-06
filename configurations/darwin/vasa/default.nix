@@ -1,7 +1,4 @@
-# ++ 42_Mo: Molybdenum
-#
-# MacBook Pro work environment
-{self, ...}: {
+{...}: {
   system.stateVersion = 5;
 
   elements = {
