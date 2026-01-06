@@ -52,7 +52,7 @@
         wallpaper = {
           enabled = true;
           overviewEnabled = false;
-          directory = "/nix/elements/fixtures/wallpapers";
+          directory = "/nix/harbor/desktops/configurations/home/toph@endurance/wallpapers";
           recursiveSearch = false;
           randomEnabled = true;
         };

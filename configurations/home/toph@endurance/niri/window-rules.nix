@@ -45,10 +45,10 @@ in {
         open-floating = true;
         opacity = 1.0;
 
-        min-width = 400; # 115 x 26 columns
-        max-width = 400;
-        min-height = 400;
-        max-height = 400;
+        min-width = 800; # 115 x 26 columns
+        max-width = 800;
+        min-height = 800;
+        max-height = 800;
       }
       {
         matches = [{title = "ld.toph.so";}];

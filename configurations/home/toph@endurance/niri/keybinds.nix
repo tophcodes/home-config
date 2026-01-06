@@ -10,7 +10,7 @@
       "Mod+space".action = spawn "fuzzel";
       "Mod+e".action = spawn "dolphin";
       "Mod+d".action = spawn "zeal"; # Documentation viewer
-      "Mod+c".action = spawn "${"spawn-term"}/bin/spawn-term";
+      "Mod+c".action = spawn "${pkgs.harbor.spawn-term}/bin/spawn-term";
       "Mod+g".action = spawn "${pkgs.harbor.hg-picker}/bin/hg-picker";
 
       "Mod+q".action = close-window;
