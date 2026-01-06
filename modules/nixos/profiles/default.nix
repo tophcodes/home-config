@@ -1,5 +1,7 @@
 {
   imports = [
     ./graphical
+    ./work
+    ./docker
   ];
 }

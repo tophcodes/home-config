@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf (builtins.elem "docker" config.elements.quirks) {
+  config = lib.mkIf config.bosun.profiles.docker.enable {
     virtualisation.docker = {
       enable = true;
 

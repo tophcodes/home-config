@@ -15,6 +15,8 @@
   bosun = {
     profiles = {
       graphical.enable = true;
+      docker.enable = true;
+      work.enable = true;
     };
 
     #quirks = ["avahi" "docker" "nix-ld"];

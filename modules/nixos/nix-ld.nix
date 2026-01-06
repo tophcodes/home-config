@@ -4,7 +4,8 @@
   lib,
   ...
 }: {
-  config = lib.mkIf (builtins.elem "nix-ld" config.elements.quirks) {
+  # TODO: Enable quirk somehow
+  config = lib.mkIf false {
     programs.nix-ld.enable = true;
     programs.nix-ld.libraries = with pkgs; [
       SDL

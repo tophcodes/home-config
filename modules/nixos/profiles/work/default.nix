@@ -2,10 +2,9 @@
   config,
   lib,
   pkgs,
-  modulesPath,
   ...
 }: {
-  config = lib.mkIf (builtins.elem "avahi" config.elements.quirks) {
+  config = lib.mkIf config.bosun.profiles.work.enable {
     services = {
       # Name Server Caching Daemon
       nscd = {
