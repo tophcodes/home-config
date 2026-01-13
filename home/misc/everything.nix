@@ -27,8 +27,6 @@
     cider-2 # Apple music player
     fractal # Matrix client
     gomuks # Matrix client TUI
-    telegram-desktop
-    vesktop # Discord client
     filezilla # FTP Client
     mochi # SRS flashcards
   ];

@@ -1,11 +1,16 @@
 {
-  inputs,
   pkgs,
   lib,
   config,
   ...
 }: let
   inherit (lib) mkIf;
+
+  sddmTheme = pkgs.sddm-astronaut.override {
+    embeddedTheme = "japanese_aesthetic";
+    themeConfig = {
+    };
+  };
 in {
   imports = [
     #inputs.niri.nixosModules.niri
@@ -18,6 +23,8 @@ in {
       libsForQt5.qtstyleplugin-kvantum
       xwayland-satellite
       nautilus
+      sddmTheme
+      kdePackages.qtmultimedia # required for our sddm theme
     ];
 
     programs.niri = {
@@ -26,14 +33,28 @@ in {
     };
 
     services = {
-      xserver.enable = true;
+      xserver = {
+        enable = true;
+        displayManager.setupCommands = ''
+          /run/current-system/sw/bin/xrandr --output HDMI-A-1 --primary
+          /run/current-system/sw/bin/xrandr --output DP-3 --right-of HDMI-A-1 --rotate left
+        '';
+      };
 
       displayManager = {
         defaultSession = "niri";
 
-        sddm = {
+        sddm = let
+          theme = "sddm-astronaut-theme";
+        in {
           enable = true;
-          wayland.enable = true;
+          package = pkgs.kdePackages.sddm;
+
+          # wayland.enable = true;
+
+          inherit theme;
+          extraPackages = [sddmTheme];
+          settings.Theme.Current = theme;
         };
       };
     };

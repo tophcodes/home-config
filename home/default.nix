@@ -10,7 +10,7 @@
       # inputs.ovos.homeManagerModules.default
       ./gaming.nix
       ./ssh.nix
-      ./email.nix
+      ./communication.nix
       ./gpg
       ./niri
       ./stylix.nix

@@ -68,6 +68,9 @@ in {
   home.packages = with pkgs; [
     reader
     tdf
+    slack
+    telegram-desktop
+    vesktop # Discord client
   ];
 
   accounts.email = {

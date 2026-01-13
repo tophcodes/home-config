@@ -101,6 +101,29 @@
           Do not include a `Co-authored-by`.
         '';
       };
+
+      mcpServers = {
+        fetch = {
+          args = ["-y" "@modelcontextprotocol/server-fetch"];
+          command = "npx";
+          type = "stdio";
+        };
+        playwright = {
+          args = ["-y" "@modelcontextprotocol/server-playwright"];
+          command = "npx";
+          type = "stdio";
+        };
+        stackexchange = {
+          args = ["-y" "mcp-server-stackexchange"];
+          command = "npx";
+          type = "stdio";
+        };
+        arxiv = {
+          args = ["-y" "mcp-server-arxiv"];
+          command = "npx";
+          type = "stdio";
+        };
+      };
     };
   };
 }

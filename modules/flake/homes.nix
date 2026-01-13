@@ -3,7 +3,9 @@
 
   mkHome = user: host: {
     imports = [
-      (self + "/configurations/home/${user}@${host}")
+      (self + "/home")
+      # TODO: Import this conditionally!
+      # (self + "/home/by-host/${host}")
       (self + "/modules/home")
     ];
   };

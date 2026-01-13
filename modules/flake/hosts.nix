@@ -3,7 +3,7 @@
 
   mkHost = hostname: config:
     {
-      path = ../../configurations/nixos/${hostname};
+      path = ../../hosts/${hostname};
       deployable = true;
       specialArgs = {inherit inputs hostname;};
     }
