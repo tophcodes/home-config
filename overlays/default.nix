@@ -15,7 +15,7 @@
       };
   in
     overlayFn {
-      inherit inputs;
+      inherit inputs lib;
       channels =
         {
           nixpkgs = final;

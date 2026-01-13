@@ -23,6 +23,7 @@
     onlyoffice-desktopeditors # libreoffice alternative
     speedcrunch # GUI calculator app
     calibre # eBook Manager
+    spacedrive-v2
 
     cider-2 # Apple music player
     fractal # Matrix client
