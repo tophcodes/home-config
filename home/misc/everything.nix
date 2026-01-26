@@ -16,6 +16,9 @@
     grim # Screenshots
     slurp # Region selection
 
+    # RDF!!!
+    cytoscape
+
     # Productivity
     obsidian # Note taking
     todoist-electron # To-Do List app

@@ -71,6 +71,7 @@ in {
     slack
     telegram-desktop
     vesktop # Discord client
+    # jitsi-meet
   ];
 
   accounts.email = {

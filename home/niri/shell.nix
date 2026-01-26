@@ -22,31 +22,31 @@
         };
 
         bar = {
-          position = "left";
+          # position = "left";
           density = "comfortable";
           floating = true;
           marginHorizontal = 0.73;
           marginVertical = 0.73;
 
-          widgets = {
-            left = [
-              {id = "ControlCenter";}
-              {id = "SystemMonitor";}
-            ];
+          # widgets = {
+          #   left = [
+          #     {id = "ControlCenter";}
+          #     {id = "SystemMonitor";}
+          #   ];
 
-            center = [
-              # {id = "MediaMini";}
-              {id = "Workspace";}
-            ];
+          #   center = [
+          #     # {id = "MediaMini";}
+          #     {id = "Workspace";}
+          #   ];
 
-            right = [
-              {id = "Tray";}
-              {id = "ScreenRecorder";}
-              {id = "Volume";}
-              {id = "NotificationHistory";}
-              {id = "Clock";}
-            ];
-          };
+          #   right = [
+          #     {id = "Tray";}
+          #     {id = "ScreenRecorder";}
+          #     {id = "Volume";}
+          #     {id = "NotificationHistory";}
+          #     {id = "Clock";}
+          #   ];
+          # };
         };
 
         wallpaper = {

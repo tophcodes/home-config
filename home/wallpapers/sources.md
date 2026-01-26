@@ -1,5 +1,0 @@
-- cat-vibes: https://wall.alphacoders.com/big.php?i=1384032
-- yellow-bedroom: https://wall.alphacoders.com/big.php?i=1395930
-- sunny-cityscape: https://wall.alphacoders.com/big.php?i=1395929
-- chill-room: https://wall.alphacoders.com/big.php?i=1350899
-- evening-ambience-cafe: https://wall.alphacoders.com/big.php?i=1349198

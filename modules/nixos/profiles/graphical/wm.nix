@@ -20,7 +20,7 @@ in {
     environment.systemPackages = with pkgs; [
       wayland-utils
       wl-clipboard
-      libsForQt5.qtstyleplugin-kvantum
+      # libsForQt5.qtstyleplugin-kvantum
       xwayland-satellite
       nautilus
       sddmTheme
@@ -61,7 +61,7 @@ in {
 
     xdg.portal = {
       enable = true;
-      xdgOpenUsePortal = true;
+      # xdgOpenUsePortal = true;
       config.common.default = "gtk";
 
       extraPortals = with pkgs; [

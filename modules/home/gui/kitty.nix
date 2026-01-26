@@ -19,6 +19,7 @@ in {
       enable = true;
 
       settings = {
+        cursor_trail = "1";
         window_padding_width = "3 3";
         paste_actions = "no-op";
         # font_family = "Monaspace Neon NF";

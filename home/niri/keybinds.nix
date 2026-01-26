@@ -8,7 +8,7 @@
   programs.niri.settings = {
     binds = with config.lib.niri.actions; {
       "Mod+space".action = spawn "fuzzel";
-      "Mod+e".action = spawn "dolphin";
+      "Mod+e".action = spawn "nautilus";
       "Mod+d".action = spawn "zeal"; # Documentation viewer
       "Mod+c".action = spawn "${pkgs.harbor.spawn-term}/bin/spawn-term";
       "Mod+g".action = spawn "${pkgs.harbor.hg-picker}/bin/hg-picker";

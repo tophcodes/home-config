@@ -23,12 +23,6 @@
     key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPjqieS4GkYAa1WRYZpxjgYsj7VGZ9U+rTFCkX8M0umD";
   };
 
-  qt = {
-    enable = true;
-    platformTheme = "qt5ct";
-    style = "kvantum";
-  };
-
   networking = {
     firewall.enable = false;
     interfaces.eno1.wakeOnLan.enable = true;

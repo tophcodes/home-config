@@ -15,9 +15,16 @@
     autoEnable = true;
 
     # TODO: Figure out a way for automatic dark-/light-mode switching
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-dawn.yaml";
+    # I've tried:
+    # rose-pine-dawn
+    # rose-pine-moon
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-mirage.yaml";
 
-    targets.firefox.profileNames = ["default" "work" "streaming"];
+    targets = {
+      gtk.enable = false;
+      qt.enable = false;
+      firefox.profileNames = ["default" "work" "streaming"];
+    };
 
     cursor = {
       package = pkgs.rose-pine-cursor;

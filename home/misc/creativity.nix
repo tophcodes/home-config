@@ -15,6 +15,11 @@
     # gimpPlugins.bimp # batch image manipulation, broken atm
     # rawtherapee
 
+    # CAD
+    freecad
+    openscad
+    antimony
+
     vcv-rack # eurorack synth simulator
     supercollider # audio programming language
   ];
