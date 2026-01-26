@@ -39,14 +39,5 @@
         ];
       };
     };
-
-    # traefik.routes.solid-pod = {
-    #   rule = "Host(`pod.toph.so`)";
-    #   url = "http://localhost:3000";
-    # };
   };
-
-  # systemd.tmpfiles.rules = [
-  #   "d /var/lib/solid - - - - -"
-  # ];
 }
