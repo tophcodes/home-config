@@ -9,7 +9,6 @@
     inputs.flatpak.nixosModules.nix-flatpak
     ./hardware.nix
     ./disko.nix
-    ./metrics.nix
   ];
 
   bosun = {
@@ -92,23 +91,7 @@
     '';
     udev.packages = [pkgs.platformio-core.udev];
 
-    beszel-agent.enable = true;
-    beszel-agent.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMkUPOw28Cu2LMuzfmvjT/L2ToNHcADwGyGvSpJ4wH2T";
     elements.ollama.enable = true;
-
-    # waka-victoriametrics = {
-    #   enable = true;
-    #   listenAddress = "127.0.0.1:8080";
-    #   victoriametrics.url = "http://localhost:8428/api/v1/write";
-    #   metrics.labels = [
-    #     "project"
-    #     "language"
-    #     "editor"
-    #     "branch"
-    #     "category"
-    #     "operating_system"
-    #   ];
-    # };
 
     usbmuxd = {
       enable = true;
