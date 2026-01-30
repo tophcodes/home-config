@@ -11,11 +11,6 @@
 with lib; let
   cfg = config.bosun;
 in {
-  imports = [
-    inputs.agenix.nixosModules.default
-    inputs.agenix-rekey.nixosModules.default
-  ];
-
   options.bosun = {
     rekeyPath = mkOption {
       type = types.str;

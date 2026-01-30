@@ -9,15 +9,9 @@
     ./nix.nix
     ./profiles.nix
     ./secrets.nix
-    ./ssh.nix
   ];
 
   # TODO: Move all of these into their own modules?
-
-  console = {
-    font = "Lat2-Terminus16";
-    useXkbConfig = true; # use xkbOptions in tty.
-  };
 
   networking.hostName = hostname;
 
@@ -25,6 +19,8 @@
     pre-commit
     git
     gitleaks
+    helix
+    fish
     just
     nh
     age

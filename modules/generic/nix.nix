@@ -2,6 +2,7 @@
   pkgs,
   lib,
   inputs,
+  hostname,
   ...
 }: {
   nix = {
@@ -15,7 +16,8 @@
     # automatic cleanup
     gc = {
       automatic = true;
-      dates = "weekly";
+      # TODO: nix-darwin uses "interval" as a key
+      dates = lib.mkIf (hostname != "vasa") "weekly";
       options = "--delete-older-than 21d";
     };
 

@@ -1,12 +1,16 @@
 {inputs, ...}: let
   inherit (inputs) self;
 
-  mkHome = user: host: {
-    imports = [
-      (self + "/home")
-      # TODO: Import this conditionally!
-      # (self + "/home/by-host/${host}")
+  mkHome = user: host: system: inputs.home-manager.lib.homeManagerConfiguration {
+    pkgs = inputs.nixpkgs.legacyPackages.${system};
+    extraSpecialArgs = {
+      inherit inputs;
+      hostname = host;
+    };
+
+    modules = [
       (self + "/modules/home")
+      (self + "/home/by-host/${host}")
     ];
   };
 in {
@@ -15,8 +19,7 @@ in {
   ];
 
   flake.homeConfigurations = {
-    "toph@endurance" = mkHome "toph" "endurance";
-    "toph@vasa" = mkHome "toph" "vasa";
-    "toph@aepplet" = mkHome "toph" "aepplet";
+    "toph@endurance" = mkHome "toph" "endurance" "x86_64-linux";
+    "toph@vasa" = mkHome "toph" "vasa" "x86_64-darwin";
   };
 }
