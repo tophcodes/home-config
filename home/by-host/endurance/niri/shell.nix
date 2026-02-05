@@ -24,7 +24,7 @@
         bar = {
           # position = "left";
           density = "comfortable";
-          floating = true;
+          # floating = true;
           marginHorizontal = 0.73;
           marginVertical = 0.73;
 

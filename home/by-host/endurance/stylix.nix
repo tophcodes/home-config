@@ -18,7 +18,8 @@
     # I've tried:
     # rose-pine-dawn
     # rose-pine-moon
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-mirage.yaml";
+    # ayu-mirage
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-dawn.yaml";
 
     targets = {
       gtk.enable = false;
