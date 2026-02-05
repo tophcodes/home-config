@@ -16,9 +16,6 @@
     grim # Screenshots
     slurp # Region selection
 
-    # RDF!!!
-    cytoscape
-
     # Productivity
     obsidian # Note taking
     todoist-electron # To-Do List app
@@ -27,7 +24,18 @@
     speedcrunch # GUI calculator app
     calibre # eBook Manager
     spacedrive-v2
+    # loupe # Photo viewer
 
+    (dokieli.overrideAttrs
+      (final: prev: {
+        installPhase = ''
+          runHook preInstall
+          mkdir -p $out/bin
+          cp -r * $out
+          rm $out/LICENSE
+          runHook postInstall
+        '';
+      }))
     cider-2 # Apple music player
     fractal # Matrix client
     gomuks # Matrix client TUI

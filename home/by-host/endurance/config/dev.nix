@@ -98,6 +98,11 @@
           command = "npx";
           type = "stdio";
         };
+        claudezilla = {
+          command = "bun";
+          args = ["/home/toph/code/vendor/claudezilla/mcp/server.js"];
+          type = "stdio";
+        };
       };
     };
   };

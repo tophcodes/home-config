@@ -47,12 +47,16 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
-#    affinity-nix.url = "github:mrshmllow/affinity-nix";
+    #    affinity-nix.url = "github:mrshmllow/affinity-nix";
     musnix.url = "github:musnix/musnix";
     flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.6.0";
     git-global-log.url = "github:tophcodes/git-global-log";
     nur = {
       url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ngipkgs = {
+      url = "github:ngi-nix/ngipkgs/?ref=672c78f6c140b480ca37cd04a4ee250fb00b1b7d";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     community-solid-server = {
@@ -86,33 +90,4 @@
         ./modules/flake
       ];
     });
-
-  # # Add modules only to specific hosts
-  # systems.hosts = with inputs; {
-  #         cobalt.modules = [
-  #           stylix.nixosModules.stylix
-  #           ovos.nixosModules.default
-  #           waka-victoriametrics.nixosModules.default
-  #         ];
-  #       };
-
-  #       overlays = with inputs; [
-  #         ovos.overlays.default
-  #         (final: prev: {
-  #           waka-victoriametrics = waka-victoriametrics.packages.${final.system}.default;
-  #         })
-  #       ];
-
-  #       outputs-builder = channels: {
-  #         formatter = channels.nixpkgs.alejandra;
-  #       };
-  #     })
-  #     // {
-  #       agenix-rekey = inputs.agenix-rekey.configure {
-  #         userFlake = inputs.self;
-  #         nixosConfigurations = inputs.self.nixosConfigurations // inputs.self.darwinConfigurations;
-  #         homeConfigurations = inputs.self.homeConfigurations;
-  #       };
-  #     };
-  # }
 }
